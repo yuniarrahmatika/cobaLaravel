@@ -29,8 +29,8 @@
                             <td>{{ $mhs->email }}</td>
                             <td>{{ $mhs->jurusan }}</td>
                             <td>
-                                <a href="" class="badge rounded-pill bg-success">Edit</a>
-                                <a href="" class="badge rounded-pill bg-danger">Delete</a>
+                                <a href="" class="badge badge-success">Edit</a>
+                                <a href="" class="badge badge-danger">Delete</a>
                             </td>
                         </tr>
                         @endforeach

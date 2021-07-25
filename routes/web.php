@@ -25,3 +25,11 @@ Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
 //menampilkan seluruh data menggunakan methode index
 Route::get('/mahasiswa', 'MahasiswaController@index');
+
+
+//students
+Route::get('/students', 'StudentsController@index');
+//1 atau {student}
+Route::get('/students/create', 'StudentsController@create');
+Route::get('/students/{student}', 'StudentsController@show');
+Route::post('/students', 'StudentsController@store');

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 //untuk akses model
 use App\Student;
+use App\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
@@ -19,7 +20,8 @@ class MahasiswaController extends Controller
 
         //folder mahasiswa -> file index.blade.php
 
-        $mahasiswa = Student::all();
+        // $mahasiswa = Student::all();
+        $mahasiswa = Mahasiswa::all();
         return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
     }
 
