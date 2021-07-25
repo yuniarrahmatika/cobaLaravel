@@ -28,8 +28,18 @@ Route::get('/mahasiswa', 'MahasiswaController@index');
 
 
 //students
-Route::get('/students', 'StudentsController@index');
-//1 atau {student}
-Route::get('/students/create', 'StudentsController@create');
-Route::get('/students/{student}', 'StudentsController@show');
-Route::post('/students', 'StudentsController@store');
+// Route::get('/students', 'StudentsController@index');
+// //1 atau {student}
+// Route::get('/students/create', 'StudentsController@create');
+// Route::get('/students/{student}', 'StudentsController@show');
+// //post untuk insert data ke dalam database
+// Route::post('/students', 'StudentsController@store');
+// //delete untuk hapus data
+// Route::delete('/students/{student}', 'StudentsController@destroy');
+// //edit
+// Route::get('/students/{student}/edit', 'StudentsController@edit');
+// //patch
+// Route::patch('/students/{student}', 'StudentsController@update');
+
+//cukup pake resource jadi tidak perlu bikin manual
+Route::resource('students','StudentsController');

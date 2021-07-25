@@ -75,7 +75,7 @@ class StudentsController extends Controller
         //all()-> mengambil semua yg ada di filable atau yg tidak ada pada guarded
         Student::create($request->all());
 
-        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Ditambahkan');;
+        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
@@ -97,7 +97,7 @@ class StudentsController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('students.edit',compact('student'));
     }
 
     /**
@@ -109,7 +109,28 @@ class StudentsController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        //validasi data agar diisi
+        $request->validate([
+            'nama' => 'required',
+            'npm' => 'required|size:9'
+        ],
+        //untuk customizing eror message
+        [
+            'nama.required' => 'Bidang nama wajib diisi',
+            'npm.required' => 'Bidang npm wajib diisi',
+            'npm.size' => 'NPM harus 9 karakter.'
+        ]);
+        
+        Student::where('id', $student->id)
+            ->update([
+                'nama' => $request->nama,
+                'npm' => $request->npm,
+                'email' => $request->email,
+                'jurusan' => $request->jurusan
+            ]);
+
+        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diubah!');
+
     }
 
     /**
@@ -120,6 +141,8 @@ class StudentsController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        Student::destroy($student->id);
+        // return $student;
+        return redirect('/students')->with('status','Data Mahasiswa Berhasil Dihapus!');
     }
 }

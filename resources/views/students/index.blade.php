@@ -10,9 +10,25 @@
                 
                 <a href="/students/create" class="btn btn-primary my-3">Tambah Data Mahasiswa</a>
                 @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
+                    @php
+                        $status = session('status')
+                    @endphp
+                    @if($status=='Data Mahasiswa Berhasil Ditambahkan')
+                        <div class="alert alert-primary">
+                            <!-- {{ session('status') }} -->
+                            {{ $status }}
+                        </div>
+                    @elseif($status=='Data Mahasiswa Berhasil Dihapus!')
+                        <div class="alert alert-danger">
+                            <!-- {{ session('status') }} -->
+                            {{ $status }}
+                        </div>
+                    @elseif($status=='Data Mahasiswa Berhasil Diubah!')
+                        <div class="alert alert-success">
+                            <!-- {{ session('status') }} -->
+                            {{ $status }}
+                        </div>
+                    @endif
                 @endif
 
                 <ul class="list-group">

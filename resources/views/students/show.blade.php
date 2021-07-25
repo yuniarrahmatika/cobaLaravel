@@ -14,9 +14,14 @@
                         <h6 class="card-subtitle mb-2 text-muted">{{ $student->npm }}</h6>
                         <p class="card-text">{{ $student->email }}</p>
                         <p class="card-text">{{ $student->student }}</p>
-                        <button type="submit" class="btn btn-primary">Edit</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                        <a href="/students" class="card-link">Kembali</a>
+                        <a href="{{ $student->id}}/edit" class="btn btn-success">Edit</a>
+                        <form action="/students/{{ $student->id }}" method="post" class="d-inline">
+                            <!-- untuk mengelabui method post agar menjadi delete -->
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <a href="/students" class="btn btn-secondary">Kembali</a>
                     </div>
                 </div>
             </div>
